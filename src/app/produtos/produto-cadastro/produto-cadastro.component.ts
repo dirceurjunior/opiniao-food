@@ -139,7 +139,7 @@ export class ProdutoCadastroComponent implements OnInit {
    }
 
    carregarIngredientes() {
-      console.log('entrou metodo carregarIngredientes');
+      console.log('entrou metodo carregarIngredientessssssssssss');
       this.filtro.itensPorPagina = 0;
       this.filtro.categoria = 6;
       this.produtoService.pesquisar(this.filtro)
