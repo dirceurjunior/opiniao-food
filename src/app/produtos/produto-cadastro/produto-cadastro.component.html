@@ -1,0 +1,229 @@
+<div class="container">
+   <form
+      autocomplete="off"
+      #produtoForm="ngForm"
+      (ngSubmit)="salvar(produtoForm)"
+   >
+      <div class="ui-g">
+         <div class="ui-g-12">
+            <h1>{{ editando ? "Edição de" : "Novo" }} Produto</h1>
+         </div>
+
+         <div class="ui-g-12 ui-md-2 ui-fluid">
+            <label for="">Ingrediente</label>
+            <p-selectButton
+               class="espaco-icones"
+               name="ingrediente"
+               [options]="simNao"
+               [(ngModel)]="produto.ingrediente"
+               #situacao
+            >
+            </p-selectButton>
+         </div>
+
+         <div class="ui-g-12 ui-md-2 ui-fluid">
+            <label for="">Adicional</label>
+            <p-selectButton
+               class="espaco-icones"
+               name="adicional"
+               [options]="simNao"
+               [(ngModel)]="produto.adicional"
+               #situacao
+            >
+            </p-selectButton>
+         </div>
+
+         <div class="ui-g-12 ui-md-2 ui-fluid">
+            <label for="">Situação</label>
+            <p-selectButton
+               class="espaco-icones"
+               name="situacao"
+               [options]="situacoes"
+               [(ngModel)]="produto.situacao"
+               #situacao
+            >
+            </p-selectButton>
+         </div>
+
+         <div class="ui-g-12 ui-md-6 ui-fluid"></div>
+
+         <div class="ui-g-12 ui-md-6 ui-fluid">
+            <label for="">Nome</label>
+            <input
+               pInputText
+               type="text"
+               [(ngModel)]="produto.nome"
+               #nome="ngModel"
+               name="nome"
+               required
+               minlength="5"
+            />
+            <app-message
+               [control]="nome"
+               error="required"
+               text="Informe um Nome para Produto"
+            ></app-message>
+            <app-message
+               [control]="nome"
+               error="minlength"
+               text=" Mínimo de {{
+                  nome.errors?.minlength?.requiredLength
+               }} caracteres |
+            Você digitou apenas {{ nome.errors?.minlength?.actualLength }}"
+            >
+            </app-message>
+         </div>
+
+         <div class="ui-g-12 ui-md-3 ui-fluid">
+            <label for="">Código de Barras</label>
+            <input
+               pInputText
+               type="text"
+               [(ngModel)]="produto.codigoBarras"
+               #valor="ngModel"
+               name="codigoBarras"
+               required
+            />
+         </div>
+
+         <div class="ui-g-12 ui-md-3 ui-fluid">
+            <label for="">Valor</label>
+            <input
+               pInputText
+               type="text"
+               [(ngModel)]="produto.valorUnitario"
+               #valor="ngModel"
+               name="valor"
+               required
+               currencyMask
+               placeholder="0,00"
+               [options]="{
+                  prefix: 'R$ ',
+                  thousands: '.',
+                  decimal: ',',
+                  allowNegative: true
+               }"
+            />
+         </div>
+
+         <div class="ui-g-12 ui-md-6 ui-fluid">
+            <label for="">Categoria</label>
+            <p-dropdown
+               [options]="categorias"
+               placeholder="Selecione"
+               #categoria="ngModel"
+               name="categoria"
+               required
+               [(ngModel)]="produto.categoria.id"
+            >
+            </p-dropdown>
+         </div>
+
+         <div class="ui-g-12 ui-md-6 ui-fluid">
+            <label for="">Unidade</label>
+            <p-dropdown
+               [options]="unidades"
+               placeholder="Selecione"
+               #unidade="ngModel"
+               name="unidade"
+               required
+               [(ngModel)]="produto.unidade.id"
+            >
+            </p-dropdown>
+         </div>
+
+         <div class="ui-g-12 ui-md-6 ui-fluid">
+            <h3>Ingredientes</h3>
+            <p-multiSelect
+               [options]="listaDeIngredientes"
+               [(ngModel)]="ingredientesSelecionados"
+               [panelStyle]="{ minWidth: '12em' }"
+               name="ingredientesSelecionados"
+            >
+               <ng-template let-value pTemplate="selectedItems">
+                  <div
+                     *ngFor="let ingredienteId of value"
+                     class="ui-multiselected-item-token ui-corner-all"
+                  >
+                     <span>{{ pegaItem(ingredienteId) }}</span>
+                  </div>
+                  <span
+                     *ngIf="!value || value.length === 0"
+                     class="ui-multiselected-empty-token ui-corner-all"
+                     >Escolha</span
+                  >
+               </ng-template>
+               <ng-template let-i pTemplate="item">
+                  <div style="font-size:14px;float:right;margin-top:4px">
+                     {{ i.label }}
+                  </div>
+               </ng-template>
+            </p-multiSelect>
+         </div>
+
+         <!-- <div class="ui-g-12 ui-md-6 ui-fluid">
+            <h3>Ingredientes com Produtos</h3>
+            <p-multiSelect
+               [options]="listaDeIngredientesComProdutos"
+               [(ngModel)]="ingredientesSelecionadosComProdutos"
+               [panelStyle]="{ minWidth: '12em' }"
+               name="ingredientesSelecionadosComProdutos"
+            >
+               <ng-template let-value pTemplate="selectedItems">
+                  <div
+                     *ngFor="let produtoId of value"
+                     class="ui-multiselected-item-token ui-corner-all"
+                  >
+                     <span>{{ pegaItem2(produtoId) }}</span>
+                  </div>
+                  <span
+                     *ngIf="!value || value.length === 0"
+                     class="ui-multiselected-empty-token ui-corner-all"
+                     >Escolha</span
+                  >
+               </ng-template>
+               <ng-template let-i pTemplate="item">
+                  <div style="font-size:14px;float:right;margin-top:4px">
+                     {{ i.label }}
+                  </div>
+               </ng-template>
+            </p-multiSelect>
+         </div> -->
+
+         <div class="ui-g-12 ui-fluid">
+            <label for="">Observação</label>
+            <textarea
+               pInputTextarea
+               name="caracteristica"
+               rows="3"
+               [(ngModel)]="produto.caracteristica"
+            ></textarea>
+         </div>
+
+         <div class="ui-g-12">
+            <label for=""
+               >Data de Cadastro {{ produto.dataCadastro | json }}</label
+            >
+         </div>
+
+         <div class="ui-g-12">
+            <button
+               pButton
+               type="submit"
+               class="espaco-icones"
+               label="Salvar"
+               [disabled]="!produtoForm.valid"
+            ></button>
+            <button
+               pButton
+               type="button"
+               class="espaco-icones"
+               label="Novo"
+               class="ui-button-info"
+               (click)="novo(produtoForm)"
+            ></button>
+            <a routerLink="/produtos">Voltar para a Pesquisa</a>
+         </div>
+      </div>
+   </form>
+</div>

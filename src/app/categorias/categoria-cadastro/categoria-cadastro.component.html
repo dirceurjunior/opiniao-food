@@ -1,0 +1,28 @@
+<div class="container">
+
+   <form autocomplete="off" #categoriaForm="ngForm" (ngSubmit)="salvar(categoriaForm)">
+
+      <div class="ui-g">
+
+         <div class="ui-g-12">
+            <h1>{{ editando ? 'Edição de' : 'Nova' }} Categoria</h1>
+         </div>
+
+         <div class="ui-g-12 ui-fluid">
+            <label for="">Descrição</label>
+            <input pInputText type="text" [(ngModel)]="categoria.descricao" name="descricao" #descricao="ngModel" required>
+            <app-message [control]="descricao" error="required" text="Informe a descrição"></app-message>
+         </div>
+
+         <div class="ui-g-12">
+            <button pButton class="espaco-icones" type="submit" label="Salvar" [disabled]="!categoriaForm.valid"></button>
+            <button pButton class="espaco-icones" type="button" label="Novo" class="ui-button-info"
+               (click)="novo(categoriaForm)"></button>
+            <a routerLink="/categorias" class="espaco-icones">Voltar para a Pesquisa</a>
+         </div>
+
+      </div>
+
+   </form>
+
+</div>

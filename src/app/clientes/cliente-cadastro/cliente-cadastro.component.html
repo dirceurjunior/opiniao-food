@@ -1,0 +1,55 @@
+<div class="container">
+
+   <form autocomplete="off" #clienteForm="ngForm" (ngSubmit)="salvar(clienteForm)">
+
+      <div class="ui-g">
+
+         <div class="ui-g-12">
+            <h1>{{ editando ? 'Edição de' : 'Novo' }} Cliente</h1>
+         </div>
+
+         <div class="ui-g-12">
+            <label for="">Tipo do Cliente</label>
+            <p-selectButton class="espaco-icones" name="pessoa" [options]="tipoPessoa" [(ngModel)]="cliente.pessoa"
+               #pessoa></p-selectButton>
+         </div>
+
+         <div class="ui-g-12">
+            <label for="">Situação do Cliente</label>
+            <p-selectButton class="espaco-icones" name="situacao" [options]="tipoSituacao"
+               [(ngModel)]="cliente.situacao" #situacao>
+            </p-selectButton>
+         </div>
+
+         <div class="ui-g-12 ui-md-6 ui-fluid">
+            <label for="">Nome</label>
+            <input pInputText type="text" [(ngModel)]="cliente.nomeRazaoSocial" #nomeRazaoSocial="ngModel"
+               name="nomeRazaoSocial" required minlength="5">
+            <app-message [control]="nomeRazaoSocial" error="required" text="Informe um Nome para Cliente"></app-message>
+         </div>
+
+         <div class="ui-g-12 ui-md-4 ui-fluid">
+            <label for="">{{ pessoa.value === 'FISICA' ? 'CPF' : 'CNPJ'}}</label>
+            <p-inputMask mask="{{ pessoa.value === 'FISICA' ? '999.999.999-99' : '99.999.999/9999-99'}}"
+               [(ngModel)]="cliente.cpfCnpj" #cpfCnpj="ngModel" name="cpfCnpj" required>
+            </p-inputMask>
+            <app-message [control]="cpfCnpj" error="required" text="Informe o CPF/CNPJ do Cliente"></app-message>
+         </div>
+
+         <div class="ui-g-6 ui-md-3 ui-fluid">
+            <label for="">Data de Cadastro</label>
+            <p-calendar dateFormat="dd/mm/yy" name="dataCadastro" [(ngModel)]="cliente.dataCadastro"></p-calendar>
+         </div>
+
+         <div class="ui-g-12">
+            <button pButton type="submit" class="espaco-icones" label="Salvar" [disabled]="!clienteForm.valid"></button>
+            <button pButton type="button" class="espaco-icones" label="Novo" class="ui-button-info"
+               (click)="novo(clienteForm)"></button>
+            <a routerLink="/clientes">Voltar para a Pesquisa</a>
+         </div>
+
+      </div>
+
+   </form>
+
+</div>

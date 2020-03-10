@@ -1,0 +1,37 @@
+<div class="container">
+   <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ui-lg-3">
+         <p-card
+            class="mesa"
+            *ngFor="let mesa of mesas; index as m; first as isFirst"
+            header="Mesa Nº {{ mesa.numero }}"
+            subheader="Valor Mesa: R$ 100,00"
+            [style]="{
+               width: '280px',
+               height: '150px',
+               backgroundColor: 'yellow'
+            }"
+            styleClass="ui-card-shadow"
+         >
+            <p-header></p-header>
+            <div></div>
+            <p-footer>
+               <button
+                  pButton
+                  [routerLink]="['/pedidos', mesa.id]"
+                  type="button"
+                  label="+ Produtos"
+                  style="margin-right: .25em"
+               ></button>
+               <button
+                  pButton
+                  type="button"
+                  label="Fechar"
+                  icon="pi pi-times"
+                  class="ui-button-secondary"
+               ></button>
+            </p-footer>
+         </p-card>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,43 @@
+<nav class="navbar">
+
+   <div class="container">
+      <div class="ui-g">
+         <div class="ui-g-12">
+            <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu">
+               <i class="pi pi-bars"> </i>
+            </a>
+         </div>
+      </div>
+   </div>
+
+   <ul class="navbar-menu" [hidden]="!exibindoMenu">
+      <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
+      <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_PRODUTO')">
+         <a routerLink="/mesas/movimento">Movimento Mesas</a>
+      </li>
+      <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_PRODUTO')">
+         <a routerLink="/produtos">Produtos</a>
+      </li>
+      <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_CLIENTE')">
+         <a routerLink="/clientes">Clientes</a>
+      </li>
+      <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_CATEGORIA')">
+         <a routerLink="/categorias">Categorias</a>
+      </li>
+      <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_UNIDADE')">
+         <a routerLink="/unidades">Unidades</a>
+      </li>
+      <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_MESA')">
+         <a routerLink="/mesas">Mesas</a>
+      </li>
+      <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_INGREDIENTE')">
+         <a routerLink="/ingredientes">Ingredientes</a>
+      </li>
+      <li class="navbar-menuitem">
+         <a href="javascript:;" (click)="logout()">
+            Logout
+         </a>
+      </li>
+   </ul>
+
+</nav>

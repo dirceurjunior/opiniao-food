@@ -1,0 +1,47 @@
+<div class="container">
+   <form autocomplete="off" #mesaForm="ngForm" (ngSubmit)="salvar(mesaForm)">
+      <div class="ui-g">
+         <div class="ui-g-12">
+            <h1>{{ editando ? "Edição de" : "Nova" }} Mesa</h1>
+         </div>
+
+         <div class="ui-g-12 ui-fluid">
+            <label for="">Número</label>
+            <input
+               pInputText
+               type="text"
+               [(ngModel)]="mesa.numero"
+               name="numero"
+               #numero="ngModel"
+               required
+            />
+            <app-message
+               [control]="numero"
+               error="required"
+               text="Informe o número da mesa"
+            ></app-message>
+         </div>
+
+         <div class="ui-g-12">
+            <button
+               pButton
+               class="espaco-icones"
+               type="submit"
+               label="Salvar"
+               [disabled]="!mesaForm.valid"
+            ></button>
+            <button
+               pButton
+               class="espaco-icones"
+               type="button"
+               label="Novo"
+               class="ui-button-info"
+               (click)="novo(mesaForm)"
+            ></button>
+            <a routerLink="/mesas" class="espaco-icones"
+               >Voltar para a Pesquisa</a
+            >
+         </div>
+      </div>
+   </form>
+</div>

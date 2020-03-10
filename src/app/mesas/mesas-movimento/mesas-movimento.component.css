@@ -1,0 +1,22 @@
+.ui-card-shadow {
+   color: red;
+   background-color: blue !important;
+}
+
+.ui-lg-3 {
+   display: contents;
+}
+
+body .ui-card {
+   background-color: red !important;
+}
+
+/* .ui-card-shadow ui-card ui-widget ui-widget-content ui-corner-all {
+   padding: 5px;
+} */
+
+body{
+   background-color: red !important;
+}
+
+
