@@ -96,9 +96,9 @@
 
       <div class="ui-g-12 ui-md-6 ui-lg-3" style="background-color: #ffffff;">
          <h3 style="text-align: center;">
-            Situação Mesa {{ pedido.mesa.numero }}
+            Situação Mesa {{ venda.mesa.numero }}
          </h3>
-         <p-table [value]="pedido.itens" [responsive]="true">
+         <p-table [value]="venda.itens" [responsive]="true">
             <ng-template pTemplate="emptymessage">
                <strong>Nenhum Produto Adicionado</strong>
             </ng-template>
@@ -193,6 +193,15 @@
          </div>
       </p-tabPanel>
       <p-tabPanel header="Incluir Adicionais" leftIcon="pi pi-inbox">
+         <p-dropdown
+            [options]="ingredientesAdicionais"
+            placeholder="Selecione"
+            #categoria="ngModel"
+            name="categoria"
+            required
+            [(ngModel)]="produto.categoria.id"
+         >
+         </p-dropdown>
       </p-tabPanel>
       <p-tabPanel
          header="Observações"
@@ -200,11 +209,11 @@
          rightIcon="pi pi-star"
       >
          <textarea
-            rows="5"
-            cols="30"
-            [(ngModel)]="ingredientesSelecionados"
             pInputTextarea
-            autoResize="autoResize"
+            name="caracteristica"
+            rows="5"
+            cols="100"
+            [(ngModel)]="produto.observacao"
          ></textarea>
       </p-tabPanel>
    </p-tabView>

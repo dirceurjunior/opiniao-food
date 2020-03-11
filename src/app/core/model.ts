@@ -26,14 +26,6 @@ export class Mesa {
    numero: number;
 }
 
-// export class Ingrediente {
-//    id: number;
-//    adicional = 'NAO';
-//    nome: string;
-//    ultimoCusto: number;
-//    valorUnitario: number;
-// }
-
 export class Produto {
    id: number;
    nome: string;
@@ -49,7 +41,7 @@ export class Produto {
    ingredientes: any[];
 }
 
-export class Pedido {
+export class Venda {
    id: number;
    dataCriacao: Date;
    dataVenda: Date;
@@ -64,7 +56,7 @@ export class Pedido {
    itens = [];
 }
 
-export class Pedido_Item {
+export class Venda_Item {
    id: number;
    quantidade: number;
    valorUnitarioSemDesconto: number;
@@ -74,17 +66,17 @@ export class Pedido_Item {
    adicionais = [];
 }
 
-// export class Lancamento {
-//    id: number;
-//    tipo = 'RECEITA';
-//    descricao: string;
-//    dataVencimento: Date;
-//    dataPagamento: Date;
-//    valor: number;
-//    observacao: string;
-//    pessoa = new Pessoa();
-//    categoria = new Categoria();
-// }
+export class Venda_Item_Adicional {
+   id: number;
+   quantidade: number;
+   valorUnitarioSemDesconto: number;
+   // valorUnitarioComDesconto: number;
+   produto = new Produto();
+   // venda = new Pedido();
+   adicionais = [];
+}
+
+
 
 
 

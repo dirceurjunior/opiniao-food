@@ -1,24 +1,24 @@
+import { VendaCadastroComponent } from './venda-cadastro/venda-cadastro.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PedidoCadastroComponent } from './pedido-cadastro/pedido-cadastro.component';
 import { AuthGuard } from '../seguranca/auth.guard';
 
 const routes: Routes = [
    {
       path: '',
-      component: PedidoCadastroComponent,
+      component: VendaCadastroComponent,
       canActivate: [AuthGuard],
       data: { roles: ['ROLE_CADASTRAR_VENDA'] }
    },
    {
       path: 'novo',
-      component: PedidoCadastroComponent,
+      component: VendaCadastroComponent,
       canActivate: [AuthGuard],
       data: { roles: ['ROLE_CADASTRAR_VENDA'] }
    },
    {
       path: ':id',
-      component: PedidoCadastroComponent,
+      component: VendaCadastroComponent,
       canActivate: [AuthGuard],
       data: { roles: ['ROLE_CADASTRAR_VENDA'] }
    }
@@ -33,4 +33,4 @@ const routes: Routes = [
       RouterModule,
    ]
 })
-export class PedidosRoutingModule { }
+export class VendasRoutingModule { }

@@ -161,35 +161,6 @@
             </p-multiSelect>
          </div>
 
-         <!-- <div class="ui-g-12 ui-md-6 ui-fluid">
-            <h3>Ingredientes com Produtos</h3>
-            <p-multiSelect
-               [options]="listaDeIngredientesComProdutos"
-               [(ngModel)]="ingredientesSelecionadosComProdutos"
-               [panelStyle]="{ minWidth: '12em' }"
-               name="ingredientesSelecionadosComProdutos"
-            >
-               <ng-template let-value pTemplate="selectedItems">
-                  <div
-                     *ngFor="let produtoId of value"
-                     class="ui-multiselected-item-token ui-corner-all"
-                  >
-                     <span>{{ pegaItem2(produtoId) }}</span>
-                  </div>
-                  <span
-                     *ngIf="!value || value.length === 0"
-                     class="ui-multiselected-empty-token ui-corner-all"
-                     >Escolha</span
-                  >
-               </ng-template>
-               <ng-template let-i pTemplate="item">
-                  <div style="font-size:14px;float:right;margin-top:4px">
-                     {{ i.label }}
-                  </div>
-               </ng-template>
-            </p-multiSelect>
-         </div> -->
-
          <div class="ui-g-12 ui-fluid">
             <label for="">Observação</label>
             <textarea

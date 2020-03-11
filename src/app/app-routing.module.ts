@@ -12,7 +12,7 @@ const routes: Routes = [
    //       .then(m => m.MesaMovimentosModule)
    // },
 
-   { path: 'pedidos', loadChildren: () => import('./pedidos/pedidos.module').then(m => m.PedidosModule) },
+   { path: 'vendas', loadChildren: () => import('./vendas/vendas.module').then(m => m.VendasModule) },
    { path: 'clientes', loadChildren: () => import('./clientes/clientes.module').then(m => m.ClientesModule) },
    { path: 'produtos', loadChildren: () => import('./produtos/produtos.module').then(m => m.ProdutosModule) },
    { path: 'categorias', loadChildren: () => import('./categorias/categorias.module').then(m => m.CategoriasModule) },
