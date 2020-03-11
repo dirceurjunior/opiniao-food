@@ -11,9 +11,9 @@ import { PanelModule } from 'primeng/panel';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ListboxModule } from 'primeng/listbox';
-import {SpinnerModule} from 'primeng/spinner';
-
-
+import { SpinnerModule } from 'primeng/spinner';
+import { AccordionModule } from 'primeng/accordion';
+import { TabViewModule } from 'primeng/tabview';
 
 import { FormsModule } from '@angular/forms';
 import { PedidoCadastroComponent } from './pedido-cadastro/pedido-cadastro.component';
@@ -40,6 +40,8 @@ import { CommonModule } from '@angular/common';
       CheckboxModule,
       ListboxModule,
       SpinnerModule,
+      AccordionModule,
+      TabViewModule,
 
       SharedModule,
       PedidosRoutingModule

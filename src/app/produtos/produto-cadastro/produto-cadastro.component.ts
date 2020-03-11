@@ -124,9 +124,7 @@ export class ProdutoCadastroComponent implements OnInit {
       }
    }
 
-
    carregarProduto(id: number) {
-      console.log('entrou metodo carregarProduto');
       this.produtoService.buscarPorId(id)
          .then(produto => {
             this.produto = produto;
@@ -139,7 +137,6 @@ export class ProdutoCadastroComponent implements OnInit {
    }
 
    carregarIngredientes() {
-      console.log('entrou metodo carregarIngredientessssssssssss');
       this.filtro.itensPorPagina = 0;
       this.filtro.categoria = 6;
       this.produtoService.pesquisar(this.filtro)

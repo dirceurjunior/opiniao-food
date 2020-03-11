@@ -71,6 +71,7 @@ export class Pedido_Item {
    // valorUnitarioComDesconto: number;
    produto = new Produto();
    // venda = new Pedido();
+   adicionais = [];
 }
 
 // export class Lancamento {

@@ -80,14 +80,13 @@
                         type="button"
                         icon="pi pi-plus"
                         (click)="adicionarProduto($event, produto)"
-                        style="margin-top:0"
                      ></button>
                      <button
                         pButton
                         type="button"
                         icon="pi pi-pencil"
                         (click)="editarProdutoPedido($event, produto)"
-                        style="margin-left:10px"
+                        style="margin-left: 10px;"
                      ></button>
                   </p-panel>
                </div>
@@ -142,30 +141,45 @@
    [responsive]="true"
    showEffect="fade"
    [modal]="true"
-   [style]="{ width: '30vw' }"
+   [style]="{ width: '50vw', height: '50vw' }"
    [baseZIndex]="10000"
    (onAfterHide)="onDialogHide()"
    [draggable]="false"
    [resizable]="false"
+   (click)="displayDialog('top')"
 >
-   <h4>Quantidade</h4>
-   <p-spinner [(ngModel)]="quantidade" [min]="1" [max]="20"></p-spinner>
-
-   <div style="margin-top: 10px;">
-      <p-listbox
-         [options]="ingredientes"
-         [(ngModel)]="ingredientesSelecionados"
-         [style]="{ width: '20vw' }"
-         multiple="multiple"
-         checkbox="checkbox"
-         filter="true"
-         optionLabel="nome"
-      >
-         <p-header>
-            <h4>Ingredientes</h4>
-         </p-header>
-      </p-listbox>
+   <div class="ui-g-12 ui-md-12 ui-fluid">
+      <label for="">Quantidade</label>
+      <p-spinner [(ngModel)]="quantidade" [min]="1" [max]="20"></p-spinner>
    </div>
+
+   <p-tabView>
+      <p-tabPanel header="Retirar Ingredientes" leftIcon="pi pi-calendar">
+         <div style="margin-top: 20px;">
+            <p-listbox
+               [options]="ingredientes"
+               [(ngModel)]="ingredientesSelecionados"
+               [style]="{ width: '30vw' }"
+               multiple="multiple"
+               checkbox="checkbox"
+               filter="true"
+               optionLabel="nome"
+            >
+               <p-header>
+                  <h4>Ingredientes</h4>
+               </p-header>
+            </p-listbox>
+         </div>
+      </p-tabPanel>
+      <p-tabPanel header="Incluir Adicionais" leftIcon="pi pi-inbox">
+      </p-tabPanel>
+      <p-tabPanel
+         header="Observações"
+         leftIcon="pi pi-user"
+         rightIcon="pi pi-star"
+      >
+      </p-tabPanel>
+   </p-tabView>
 
    <p-footer>
       <button
