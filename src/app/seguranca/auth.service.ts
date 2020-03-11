@@ -1,4 +1,4 @@
-import { environment } from './../../environments/environment.prod';
+import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Injectable } from '@angular/core';
@@ -24,6 +24,7 @@ export class AuthService {
    }
 
    login(usuario: string, senha: string): Promise<void> {
+      console.log('url' + this.oauthTokenUrl);
       const headers = new HttpHeaders()
          .set('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==')
          .set('Content-Type', 'application/x-www-form-urlencoded');

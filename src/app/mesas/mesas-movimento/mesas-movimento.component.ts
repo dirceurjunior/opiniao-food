@@ -32,7 +32,6 @@ export class MesasMovimentoComponent implements OnInit {
       this.mesaService.listarTodas()
          .then(mesas => {
             this.mesas = mesas.content;
-            console.log(this.mesas);
          })
          .catch(erro => this.errorHandler.handle(erro));
    }

@@ -141,16 +141,37 @@
    [responsive]="true"
    showEffect="fade"
    [modal]="true"
-   [style]="{ width: '50vw', height: '50vw' }"
+   [style]="{ width: '80vw', height: '50vw' }"
    [baseZIndex]="10000"
-   (onAfterHide)="onDialogHide()"
    [draggable]="false"
    [resizable]="false"
-   (click)="displayDialog('top')"
 >
    <div class="ui-g-12 ui-md-12 ui-fluid">
       <label for="">Quantidade</label>
       <p-spinner [(ngModel)]="quantidade" [min]="1" [max]="20"></p-spinner>
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+         <div class="ui-inputgroup">
+            <button
+               pButton
+               type="button"
+               icon="pi pi-plus"
+               class="ui-button-success"
+            ></button>
+            <input
+               [(ngModel)]="quantidade"
+               type="text"
+               pInputText
+               disabled="true"
+               style="font-weight: bold; text-align: center; font-size: large;"
+            />
+            <button
+               pButton
+               type="button"
+               icon="pi pi-minus"
+               class="ui-button-danger"
+            ></button>
+         </div>
+      </div>
    </div>
 
    <p-tabView>
@@ -178,6 +199,13 @@
          leftIcon="pi pi-user"
          rightIcon="pi pi-star"
       >
+         <textarea
+            rows="5"
+            cols="30"
+            [(ngModel)]="ingredientesSelecionados"
+            pInputTextarea
+            autoResize="autoResize"
+         ></textarea>
       </p-tabPanel>
    </p-tabView>
 

@@ -62,7 +62,6 @@ export class PedidoCadastroComponent implements OnInit {
       private title: Title
    ) { }
 
-
    ngOnInit() {
       this.title.setTitle('Novo Pedido');
       const idMesa = this.route.snapshot.params['id'];
@@ -111,7 +110,6 @@ export class PedidoCadastroComponent implements OnInit {
          .then(produto => {
             this.produto = produto;
             this.ingredientes = this.produto.ingredientes.map(ingrediente => {
-               //  return { label: ingrediente.nome, value: ingrediente.id };
                return ingrediente;
             });
             this.ingredientesSelecionados = this.ingredientes;
@@ -122,14 +120,6 @@ export class PedidoCadastroComponent implements OnInit {
       this.displayDialog = true;
       event.preventDefault();
    }
-
-   // pegaItem(id) {
-   //    console.log(id);
-   //    if (this.ingredientes && id) {
-   //       const ingrediente = this.ingredientes.find(item => item.id === id);
-   //       return ingrediente ? ingrediente.nome : '';
-   //    }
-   // }
 
    adicionarPedido() {
       console.log('adicionando pedido');

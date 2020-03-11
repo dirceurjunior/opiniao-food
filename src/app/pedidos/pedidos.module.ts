@@ -14,6 +14,8 @@ import { ListboxModule } from 'primeng/listbox';
 import { SpinnerModule } from 'primeng/spinner';
 import { AccordionModule } from 'primeng/accordion';
 import { TabViewModule } from 'primeng/tabview';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+
 
 import { FormsModule } from '@angular/forms';
 import { PedidoCadastroComponent } from './pedido-cadastro/pedido-cadastro.component';
@@ -42,6 +44,7 @@ import { CommonModule } from '@angular/common';
       SpinnerModule,
       AccordionModule,
       TabViewModule,
+      InputTextareaModule,
 
       SharedModule,
       PedidosRoutingModule
